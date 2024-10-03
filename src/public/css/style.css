@@ -1,0 +1,32 @@
+.indexClass{
+    display: flex;
+    justify-content: center;
+}
+.aClass{
+    margin: 50px;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-bottom: 20px;
+}
+
+.cartImage {
+    width: 100px;
+}
+
+.navbar-nav{
+    align-items: center;
+}
+

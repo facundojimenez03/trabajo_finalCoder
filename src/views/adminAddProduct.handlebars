@@ -1,0 +1,59 @@
+<div class="container my-5 p-5 bg-light rounded shadow-lg">
+    <form id="addProductForm" action="/adminAddProduct" method="POST" class="needs-validation" novalidate>
+        <h2 class="mb-4 text-center text-secondary"> Nuevo Producto</h2>
+        <div class="form-group mb-4">
+            <label for="name" class="form-label font-weight-bold">Nombre del Producto</label>
+            <input type="text" class="form-control border-primary" id="name" name="name" placeholder="Nombre" value="{{productById.name}}" required>
+            <div class="invalid-feedback">Por favor, ingrese un nombre válido.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="description" class="form-label font-weight-bold">Descripción</label>
+            <textarea class="form-control border-primary" id="description" name="description" placeholder="Descripción" rows="4" required>{{productById.description}}</textarea>
+            <div class="invalid-feedback">Por favor, ingrese una descripción válida.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="price" class="form-label font-weight-bold">Precio</label>
+            <input type="number" class="form-control border-primary" id="price" name="price" placeholder="Precio" value="{{productById.price}}" required>
+            <div class="invalid-feedback">Por favor, ingrese un precio válido.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="category" class="form-label font-weight-bold">Categoría</label>
+            <select class="form-control border-primary" id="category" name="category" required>
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="comida para perro" {{#if (equals productById.category "comid para perro")}}selected{{/if}}>comida para perro</option>
+                <option value="comida para gatos" {{#if (equals productById.category "Lcomida para gatos")}}selected{{/if}}>comida para gatos</option>
+                <option value="juguetes para tus mascotas" {{#if (equals productById.category "juguetes para tus mascotas")}}selected{{/if}}>juguetes para tus mascotas</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una categoría.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="availability" class="form-label font-weight-bold">Disponibilidad</label>
+            <select class="form-control border-primary" id="availability" name="availability" required>
+                <option value="" disabled selected>Selecciona disponibilidad</option>
+                <option value="true" {{#if (equals productById.availability "true")}}selected{{/if}}>Disponible</option>
+                <option value="false" {{#if (equals productById.availability "false")}}selected{{/if}}>No disponible</option>
+            </select>
+            <div class="invalid-feedback">Seleccione la disponibilidad.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="stock" class="form-label font-weight-bold">Stock</label>
+            <input type="number" class="form-control border-primary" id="stock" name="stock" placeholder="Stock" value="{{productById.stock}}" required>
+            <div class="invalid-feedback">Ingrese un stock válido.</div>
+        </div>
+        <div class="form-group mb-4">
+            <label for="thumbnail" class="form-label font-weight-bold">URL de la Imagen</label>
+            <input type="url" class="form-control border-primary" id="thumbnail" name="thumbnail" placeholder="URL de la Imagen" value="{{productById.thumbnail}}" required>
+            <div class="invalid-feedback">Ingrese una URL válida.</div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-lg btn-success shadow-sm" onclick="confirmAddProduct(event)">
+                Agregar Producto
+            </button>
+            <a href="/adminViewAllProducts" class="btn btn-lg btn-outline-danger shadow-sm">
+                Volver a Productos
+            </a>
+        </div>
+    </form>
+</div>
+
+<script src="/js/addProduct.js"></script>

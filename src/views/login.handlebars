@@ -1,0 +1,44 @@
+
+<body>
+    {{#if messages}}
+        {{#each messages}}
+            <div class="flash-message error">{{ this }}</div>
+        {{/each}}
+    {{/if}}
+    <div class="container" style="width:500px">
+        <h2 class="mt-5">Inicia sesión con tu cuenta</h2>
+        <p> <a href="/register">Registrate</a></p>
+        <br>
+        <div>
+            <a href="/auth/github"><button class="btn btn-outline-secondary"><i class="fa-brands fa-github fa-beat" style="--fa-animation-duration: 5s;"></i> Ingresar con GitHub</button></a>
+        </div>
+        <hr>
+        <br>
+        <h5>Iniciar sesión con tu Email:</h5>
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+        <br>
+        <a href="/forgot-password">Olvidaste tu contraseña?</a>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const urlParams = new URLSearchParams(window.location.search)
+                if (urlParams.has('success')) {
+                    Swal.fire('¡Éxito!', urlParams.get('success'), 'success')
+                }
+                if (urlParams.has('error')) {
+                    Swal.fire('Error', urlParams.get('error'), 'error')
+                }
+            })
+        </script>
+    </div>
+</body>

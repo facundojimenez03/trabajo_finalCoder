@@ -1,0 +1,80 @@
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4 text-uppercase text-primary">Lista de productos</h1>
+        {{#if (or (equals user.role "admin") (equals user.role "premium"))}}
+            <a href="/adminAddProduct" class="btn btn-lg btn-outline-success shadow-sm">
+                + Agregar un producto
+            </a>
+        {{/if}}
+    </div>
+
+    {{#if products.length}}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr class="text-center">
+                        <th>Imagen</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Publicado por</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                        <tr class="align-middle text-center">
+                            <td><img src="{{this.thumbnail}}" alt="{{this.title}} thumbnail" class="img-thumbnail" style="width: 75px; height: 75px;"></td>
+                            <td class="text-muted">{{this._id}}</td>
+                            <td class="font-weight-bold">{{this.name}}</td>
+                            <td class="text-success">${{this.price}}</td>
+                            <td class="text-info">{{this.owner}}</td>
+                            <td>
+                                <a href="/adminUpdateProduct/{{this._id}}" class="btn btn-outline-primary btn-sm rounded-circle">
+                                    ✏
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/adminDeleteProduct/{{this._id}}" class="btn btn-outline-danger btn-sm rounded-circle" id="deleteProductBtn">
+                                    ❌
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{else}}
+        <div class="alert alert-warning text-center" role="alert">
+            <strong>No hay productos disponibles</strong>
+        </div>
+    {{/if}}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteBtns = document.querySelectorAll('#deleteProductBtn')
+        
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault()
+                
+                const deleteUrl = this.getAttribute('href')
+                
+                Swal.fire({
+                    title: 'Eliminar',
+                    text: 'Se eliminara este producto',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Sí, borrar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = deleteUrl
+                    }
+                })
+            })
+        })
+    })
+</script>

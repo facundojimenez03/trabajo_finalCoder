@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <h3 class="mb-4">Bienvenido, <strong>{{user.first_name}}</strong></h3>
+    {{#if (different user.role "admin")}}
+        <h5 class="mb-4">Escriba un comentario</h5>
+        <form action="/api/chat" method="POST" class="mb-4">
+            <div class="form-group mb-3">
+                <input type="text" class="form-control" name="content" placeholder="Mensaje" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Enviar</button>
+        </form>
+        <hr>
+    {{/if}}
+    <div>
+        {{#each messages}}
+            <div class="message border rounded p-3 mb-4" style="background-color: #fdf7e3;">
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div>
+                        <img style="width: 50px; border-radius: 50%;" src="{{user.profile_image}}" alt="Profile Image">
+                    </div>
+                    <div>
+                        <h5 class="mb-0">
+                            <strong>{{user.first_name}}:</strong>
+                            <small class="text-muted">({{user.email}})</small>
+                        </h5>
+                    </div>
+                </div>
+                <p  <strong>{{content}}</strong></p>
+                <small class="text-muted">{{timestamp}}</small>
+                <div class="mt-2">
+                    {{#if (equals user._id ../user._id)}}
+                        <a href="/api/chat/delete/{{_id}}" class="btn btn-danger btn-sm">Eliminar</a>  
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const editModal = new bootstrap.Modal(document.getElementById('edit-modal'))
+    const commentModal = new bootstrap.Modal(document.getElementById('comment-modal'))
+
+    const editForm = document.getElementById('edit-form')
+    const editMessageInput = document.getElementById('edit-message-input')
+
+    const commentForm = document.getElementById('comment-form')
+    const commentInput = document.getElementById('comment-input')
+
+    document.querySelectorAll('.edit').forEach(button => {
+        button.addEventListener('click', () => {
+            const messageId = button.getAttribute('data-id')
+            const content = button.getAttribute('data-content')
+            editMessageInput.value = content
+            editForm.action = `/api/chat/edit/${messageId}`
+            editModal.show()
+        })
+    })
+
+    document.querySelectorAll('.commentMessage').forEach(button => {
+        button.addEventListener('click', () => {
+            const messageId = button.getAttribute('data-id')
+            commentForm.action = `/api/chat/comment/${messageId}`
+            commentModal.show()
+        })
+    })
+})
+</script>

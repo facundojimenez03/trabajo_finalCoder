@@ -1,0 +1,75 @@
+<div class="container py-4">
+    <h3 class="display-4 text-uppercase text-primary">Editar producto</h3>
+    <form action="/adminUpdateProduct/{{productById._id}}" method="POST" id="adminUpdateForm" class="shadow p-4 rounded">
+        <div class="form-group mb-4">
+            <label for="name" class="font-weight-bold">Nombre</label>
+            <input type="text" class="form-control border-dark" id="name" name="name" placeholder="Nombre" value="{{productById.name}}">
+        </div>
+        <div class="form-group mb-4">
+            <label for="description" class="font-weight-bold">Descripción</label>
+            <textarea class="form-control border-dark" id="description" name="description" placeholder="Descripción" rows="3">{{productById.description}}</textarea>
+        </div>
+        <div class="form-group mb-4">
+            <label for="price" class="font-weight-bold">Precio</label>
+            <input type="number" class="form-control border-dark" id="price" name="price" placeholder="Precio" value="{{productById.price}}">
+        </div>
+        <div class="form-group">
+            <label for="category" class="font-weight-bold">Categoría</label>
+            <select class="form-control border-dark" id="category" name="category" required>
+                <option value="comida para perro" {{#if (equals productById.category "comid para perro")}}selected{{/if}}>comida para perro</option>
+                <option value="comida para gatos" {{#if (equals productById.category "Lcomida para gatos")}}selected{{/if}}>comida para gatos</option>
+                <option value="juguetes para tus mascotas" {{#if (equals productById.category "juguetes para tus mascotas")}}selected{{/if}}>juguetes para tus mascotas</option>
+                
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <label for="availability" class="font-weight-bold">Disponibilidad</label>
+            <select class="form-control border-dark" id="availability" name="availability" required>
+                <option value="" disabled selected>Selecciona disponibilidad</option>
+                <option value="true" {{#if (equals productById.availability "true")}}selected{{/if}}>True</option>
+                <option value="false" {{#if (equals productById.availability "false")}}selected{{/if}}>False</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <label for="stock" class="font-weight-bold">Stock</label>
+            <input type="number" class="form-control border-dark" id="stock" name="stock" placeholder="Stock" value="{{productById.stock}}">
+        </div>
+        <div class="form-group mb-4">
+            <label for="thumbnail" class="font-weight-bold">URL de la Imagen</label>
+            <input type="text" class="form-control border-dark" id="thumbnail" name="thumbnail" placeholder="URL de la Imagen" value="{{productById.thumbnail}}">
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success" id="updateProductBtn">Actualizar</button>
+            <a href="/adminViewAllProducts" class="btn btn-secondary">Volver a Productos</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const updateBtn = document.getElementById('updateProductBtn')
+        
+        updateBtn.addEventListener('click', function (event) {
+            event.preventDefault()
+            
+            Swal.fire({
+                title: 'Editar',
+                text: 'Se editara el producto',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, actualizar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('adminUpdateForm')
+                    if (form) {
+                        form.submit()
+                    } else {
+                        console.error('Formulario no encontrado.')
+                    }
+                }
+            })
+        })
+    })
+</script>

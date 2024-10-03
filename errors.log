@@ -1,0 +1,60 @@
+2024-09-25 08:07:47 [35mfatal[39m: [35mThis is a fatal log message[39m
+2024-09-25 09:26:05 [31merror[39m: [31mParse error on line 32:[39m
+[31m...lass="dropdown-item"[39m
+[31m-----------------------^[39m
+[31mExpecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'[39m
+2024-09-25 09:26:06 [31merror[39m: [31mParse error on line 32:[39m
+[31m...lass="dropdown-item"[39m
+[31m-----------------------^[39m
+[31mExpecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'[39m
+2024-09-25 09:26:19 [31merror[39m: [31mParse error on line 32:[39m
+[31m...lass="dropdown-item"[39m
+[31m-----------------------^[39m
+[31mExpecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'[39m
+2024-09-25 09:26:25 [31merror[39m: [31mParse error on line 32:[39m
+[31m...lass="dropdown-item"[39m
+[31m-----------------------^[39m
+[31mExpecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'[39m
+2024-09-25 09:26:26 [31merror[39m: [31mParse error on line 32:[39m
+[31m...lass="dropdown-item"[39m
+[31m-----------------------^[39m
+[31mExpecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'[39m
+2024-09-25 10:00:10 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-25 10:00:41 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-25 10:00:41 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-25 10:00:42 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-25 10:00:42 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-25 10:00:42 [31merror[39m: [31mParse error on line 41:[39m
+[31m...li>                {{/if}}            [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'OPEN_ENDBLOCK'[39m
+2024-09-28 08:04:04 [31merror[39m: [31mParse error on line 39:[39m
+[31m...li>                {{else}}           [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'INVERSE'[39m
+2024-09-28 08:04:08 [31merror[39m: [31mParse error on line 39:[39m
+[31m...li>                {{else}}           [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'INVERSE'[39m
+2024-09-28 08:04:09 [31merror[39m: [31mParse error on line 39:[39m
+[31m...li>                {{else}}           [39m
+[31m----------------------^[39m
+[31mExpecting 'EOF', got 'INVERSE'[39m
+2024-10-02 17:52:34 [35mfatal[39m: [35mThis is a fatal log message[39m
+2024-10-02 17:52:36 [31merror[39m: [31mThis is a error log message[39m
+2024-10-02 19:23:05 [31merror[39m: [31mThis is a error log message[39m

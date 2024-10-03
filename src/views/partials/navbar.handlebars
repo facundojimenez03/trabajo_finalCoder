@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm" style="margin-bottom: 15px;">
+    <div class="container-fluid" style="background-color: #c8e2d5;"> 
+        
+        <a class="navbar-brand d-flex align-items-center" href="/products">
+            <img src="https://acdn.mitiendanube.com/stores/003/167/098/themes/common/logo-1636751206-1684776296-446a834d5f60758f1cb07bb7026598a01684776297-320-0.webp" width="120px" alt="Logo Tienda de Mascotas" style="border-radius: 8px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="/products">Productos para tus Mascotas</a> 
+                    
+                      <ul class="dropdown-menu" aria-labelledby="otherOptionsDropdown"></ul>
+                            <li><a class="dropdown-item" href="/mockingProducts">mockingProducts</a></li>
+                            <li><a class="dropdown-item" href="/loggertestview">loggerTest</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="/api-docs">Swagger</a></li>
+                        </ul>
+                    </li>
+
+
+              
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                {{#if user}}
+                    <li class="nav-item dropdown" style="tem">
+                        <a class="nav-link fw-bold dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{user.profile_image}}" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 8px;">
+                            {{user.first_name}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="/profile">Ver Perfil</a></li>
+                            <li><a class="dropdown-item" href="/profile/{{user._id}}">Editar Perfil</a></li> 
+                            <li><a class="dropdown-item" href="/carts/{{user.cart._id}}">Carrito de Compras</a></li> 
+                            <li><a class="dropdown-item" href="/chat">Mensajes</a></li> 
+                            <hr class="dropdown-divider">
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/carts/{{user.cart._id}}"> 
+                            <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <button class="btn" id="logoutButton">
+                            <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+                        </button>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="/">Iniciar Sesión</a> 
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<script src="/js/logout.js"></script> 

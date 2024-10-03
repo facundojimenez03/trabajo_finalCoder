@@ -1,0 +1,72 @@
+<body>
+    {{#if user}}
+        <h3 class="text-left bg-primary text-white py-3 pl-3">Carrito de  
+            <strong>
+                {{user.first_name}}
+            </strong>
+        </h3>
+    {{else}}
+        <p class="text-right pr-3">
+            Inicia sesión
+            <a href="/" class="btn btn-outline-primary ml-2">Iniciar</a>
+        </p>
+    {{/if}}
+    <div id="cart" data-cart-id="{{cart._id}}" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+        {{#if cart.products.length}}
+            <div class="row mt-4">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Subtotal</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each cart.products}}
+                            <tr data-product-id="{{this.product._id}}">
+                                <td>
+                                    <a href="/products/{{product._id}}">
+                                        <img class="cartImage img-thumbnail" src="{{this.product.thumbnail}}" alt="{{this.product.description}}">
+                                    </a>
+                                </td>
+                                <td>{{this.product.name}}</td>
+                                <td>{{this.product.description}}</td>
+                                <td>${{this.product.price}}</td>
+                                <td class="text-center quantity"><strong class="badge  p-2">{{this.quantity}}</strong></td>
+                                <td class="text-center stock"><strong class="badge p-2">{{this.product.stock}}</strong></td>
+                                <td>${{calculateSubtotal this.product.price this.quantity}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeFromCart('{{this.product._id}}')"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-center mt-4 d-flex justify-content-between">
+                <a class="btn btn-outline-primary" href="/products">Continuar Comprando</a>
+                <div>
+                    <button class="btn btn-outline-warning" onclick="emptyCart()">Vaciar carrito</button>
+                    <button id="finalize-purchase" class="btn btn-outline-success">Finalizar Compra</button>
+                </div>
+                <h3 class="text-dark">Total: ${{calculateTotal cart.products}}</h3>
+            </div>
+        {{else}}
+            <h2 class="text-center mt-4 text-secondary">El carrito está vacío</h2>
+            <br>
+            <h5 class="text-center">
+                Comienza a comprar <a href="/products" class="text-primary">productos</a>
+            </h5>
+        {{/if}}
+    </div>
+
+    <script src="/js/cart.js"></script>
+</body>
